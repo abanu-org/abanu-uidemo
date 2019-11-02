@@ -1,0 +1,101 @@
+# User-specific files
+
+*.suo 
+*.user 
+*.userosscache 
+*.sln.docstates 
+
+# Build results
+
+[Oo]bj/
+[Bb]in/
+#[Dd]ebug/
+#[Rr]elease/
+[b]in - Copy/
+[b]in2/
+
+*.[Oo]bj
+*.suo
+*.ncb
+*.aps
+*.user
+*.ccscc
+*.cache
+*.bak
+*.swp
+*.pidb
+*.userprefs
+*.FileListAbsolute.txt
+*.[Cc]ache
+*.tlog
+*.vs10x
+*.exe.manifest
+*.mdb
+*.docstates
+*.vsp
+Thumbs.db
+build.force
+/tmp
+/tags
+/.vs/
+.vs/
+/Tests/BootImage/
+/Installer/installer
+
+# NuGet Packages
+*.nupkg
+
+# The packages folder can be ignored because of Package Restore
+**/packages/*
+
+# except build/, which is used as an MSBuild target.
+!**/packages/build/
+
+# exclude test directory
+.test/
+
+Mosa-Project/
+
+*.o
+
+os/
+logs/
+#/tools/
+*.hexer
+
+#Emacs files
+\#*\#
+
+# monodevelop lock file?
+.\#*
+
+.gdb_history
+
+# libreoffice lock files
+.~lock.*
+
+# JetBrain Rider
+.idea/
+
+# nohup output files
+*.out
+
+# dumps
+/mem*
+/m[0-9]*
+/mem[0-9]*
+/m
+*.mem
+*.dmp
+*.dump
+
+# images or disks
+*.img
+*.image
+*.bin
+*.disk
+*.dsk
+*.raw
+*.iso
+*.drive
+*.qcow
