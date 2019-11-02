@@ -40,6 +40,8 @@ namespace Abanu.Kernel
             gfx.Rectangle(0, 0, sur.Width, sur.Height);
             gfx.Fill();
 
+            SysCalls.Tmp_DisplayServer_FlushWindow();
+
             Console.WriteLine("Gui Demo ready");
 
             while (true)
