@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abanu.DisplayServer", "Abanu.DisplayServer\Abanu.DisplayServer.csproj", "{215E8B6C-FBB9-4B8D-81E6-21E88E746005}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{80BF23A8-C3B0-47E7-B9DB-AF22D5B66327}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abanu.Drawing", "..\..\abanu\src\Abanu.Drawing\Abanu.Drawing.csproj", "{F1DAAA4E-EC76-472C-AA35-4EB0E2E16FF5}"
@@ -35,16 +33,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Abanu", "Abanu", "{BEDCC4F7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Abanu.Framebuffer", "..\..\abanu\src\Abanu.Framebuffer\Abanu.Framebuffer.csproj", "{1836DD47-6E4C-40B8-9628-FEBFCBF9EE5A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "App.GuiDemo", "App.GuiDemo\App.GuiDemo.csproj", "{25A3AC90-40DB-4962-9EA0-43C4AFC41942}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{215E8B6C-FBB9-4B8D-81E6-21E88E746005}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{215E8B6C-FBB9-4B8D-81E6-21E88E746005}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{215E8B6C-FBB9-4B8D-81E6-21E88E746005}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{215E8B6C-FBB9-4B8D-81E6-21E88E746005}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F1DAAA4E-EC76-472C-AA35-4EB0E2E16FF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F1DAAA4E-EC76-472C-AA35-4EB0E2E16FF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F1DAAA4E-EC76-472C-AA35-4EB0E2E16FF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -93,6 +89,10 @@ Global
 		{1836DD47-6E4C-40B8-9628-FEBFCBF9EE5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1836DD47-6E4C-40B8-9628-FEBFCBF9EE5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1836DD47-6E4C-40B8-9628-FEBFCBF9EE5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25A3AC90-40DB-4962-9EA0-43C4AFC41942}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25A3AC90-40DB-4962-9EA0-43C4AFC41942}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25A3AC90-40DB-4962-9EA0-43C4AFC41942}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25A3AC90-40DB-4962-9EA0-43C4AFC41942}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
