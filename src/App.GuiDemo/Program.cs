@@ -18,7 +18,6 @@ namespace Abanu.Kernel
     public static class Program
     {
 
-        private static IFrameBuffer fb;
         private static ISurface sur;
         private static IGraphicsAdapter gfx;
 
@@ -28,20 +27,20 @@ namespace Abanu.Kernel
             MessageManager.OnDispatchError = OnDispatchError;
             MessageManager.OnMessageReceived = MessageReceived;
 
-            fb = FrameBuffer.Create();
-            if (fb == null)
-            {
-                Console.WriteLine("No Framebuffer found");
-                ApplicationRuntime.Exit(0);
-            }
-            sur = new FramebufferSurface(fb);
+            Console.WriteLine("Gui Demo starting");
+
+            var targetProcessID = SysCalls.GetProcessIDForCommand(SysCallTarget.Tmp_DisplayServer_CreateWindow);
+            var windowData = (CreateWindowResult*)SysCalls.RequestMessageBuffer((uint)sizeof(CreateWindowResult), targetProcessID).Start;
+
+            SysCalls.Tmp_DisplayServer_CreateWindow(ApplicationRuntime.CurrentProcessID, windowData, 200, 100);
+            sur = new MemorySurface(windowData->Addr, windowData->Width, windowData->Height, windowData->Pitch, windowData->Depth);
             gfx = new GraphicsAdapter(sur);
 
-            SysCalls.RegisterService(SysCallTarget.Tmp_DisplayServer_CreateWindow);
-            SysCalls.RegisterService(SysCallTarget.Tmp_DisplayServer_FlushWindow);
-            SysCalls.SetServiceStatus(ServiceStatus.Ready);
+            gfx.SetSource(0x0000FF00);
+            gfx.Rectangle(0, 0, sur.Width, sur.Height);
+            gfx.Fill();
 
-            Console.WriteLine("DisplayServer ready");
+            Console.WriteLine("Gui Demo ready");
 
             while (true)
             {
@@ -56,71 +55,8 @@ namespace Abanu.Kernel
 
         public static unsafe void MessageReceived(SystemMessage* msg)
         {
-            switch (msg->Target)
-            {
-                case SysCallTarget.Tmp_DisplayServer_CreateWindow:
-                    CreateWindow(msg);
-                    break;
-                case SysCallTarget.Tmp_DisplayServer_FlushWindow:
-                    FlushWindow(msg);
-                    break;
-            }
-
             MessageManager.Send(new SystemMessage(SysCallTarget.ServiceReturn));
         }
 
-        // TODO: Management
-        private static Window CurrentWindow;
-
-        private static unsafe void CreateWindow(SystemMessage* msg)
-        {
-            var sourceProcess = msg->Arg1; // TODO: automatic sourceProcesID detect
-            var resultAddr = (CreateWindowResult*)msg->Arg2;
-            var width = (int)msg->Arg3;
-            var height = (int)msg->Arg4;
-
-            width = Math.Min(width, sur.Width);
-            height = Math.Min(height, sur.Height);
-
-            var pitch = width * 4;
-
-            var size = height * pitch;
-
-            var buf = SysCalls.RequestMessageBuffer((uint)size, sourceProcess);
-            var result = new CreateWindowResult
-            {
-                Addr = buf.Start,
-                Height = height,
-                Width = width,
-                Pitch = pitch,
-                Depth = sur.Depth,
-            };
-
-            var clientArea = new MemorySurface(buf.Start, width, height, pitch, sur.Depth);
-            CurrentWindow = new Window(clientArea);
-
-            *resultAddr = result;
-        }
-
-        public static unsafe void FlushWindow(SystemMessage* msg)
-        {
-            var win = CurrentWindow;
-            var clientArea = win.ClientArea;
-            gfx.SetSource(clientArea, 0, 0);
-            gfx.Rectangle(0, 0, clientArea.Width, clientArea.Height);
-            gfx.Fill();
-        }
-
     }
-
-    public class Window
-    {
-        public ISurface ClientArea;
-
-        public Window(ISurface clientArea)
-        {
-            ClientArea = clientArea;
-        }
-    }
-
 }

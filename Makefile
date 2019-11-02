@@ -19,6 +19,8 @@ $(OUT): $(NET)
 	cd $(CUR_DIR)
 	../abanu/abctl build external $(shell ../abanu/abctl abspath $(abspath bin/App.GuiDemo.exe))
 
-$(NET):
+$(NET): FORCE
 	cd $(CUR_DIR)
 	(cd src && ../../abanu/abctl tool msbuild /p:Configuration=Debug /m -Verbosity:minimal)
+
+FORCE:

@@ -61,10 +61,6 @@
       <Project>{f1daaa4e-ec76-472c-aa35-4eb0e2e16ff5}</Project>
       <Name>Abanu.Drawing</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\abanu\src\Abanu.Framebuffer\Abanu.Framebuffer.csproj">
-      <Project>{1836dd47-6e4c-40b8-9628-febfcbf9ee5a}</Project>
-      <Name>Abanu.Framebuffer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\abanu\src\Abanu.Kernel.Api\Abanu.Kernel.Api.csproj">
       <Project>{ed52e867-98f0-4fbf-ab06-4812ae5ffb43}</Project>
       <Name>Abanu.Kernel.Api</Name>
