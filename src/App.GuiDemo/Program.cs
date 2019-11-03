@@ -44,9 +44,38 @@ namespace Abanu.Kernel
 
             Console.WriteLine("Gui Demo ready");
 
+            var direction = 1;
+            var pos = 128;
+            gfx.MoveTo(10, 10);
+            gfx.LineTo(50, 70);
+
             while (true)
             {
-                SysCalls.ThreadSleep(0);
+                uint color = 0x0000FF00;
+                uint mask = (uint)pos;
+                uint newColor = color | mask;
+
+                gfx.SetSource(newColor);
+                gfx.Rectangle(0, 0, sur.Width, sur.Height);
+                gfx.Fill();
+
+                gfx.SetSource(0x00FF0000);
+                gfx.Stroke();
+
+                pos += direction;
+                if (pos >= 255)
+                {
+                    direction = -1;
+                }
+                else
+                {
+                    if (pos <= 0)
+                        direction = 1;
+                }
+
+                SysCalls.Tmp_DisplayServer_FlushWindow();
+
+                //SysCalls.ThreadSleep(0);
             }
         }
 
