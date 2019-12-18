@@ -1,5 +1,5 @@
 ﻿// This file is part of Abanu, an Operating System written in C#. Web: https://www.abanu.org
-// Licensed under the GNU 2.0 license. See LICENSE.txt file in the project root for full license information.
+// Licensed under the MIT license. See LICENSE.txt file in the project root for full license information.
 
 using System;
 using System.Collections.Generic;
@@ -79,12 +79,12 @@ namespace Abanu.Kernel
             }
         }
 
-        public static unsafe void OnDispatchError(Exception ex)
+        public static void OnDispatchError(Exception ex)
         {
             Console.WriteLine(ex.Message);
         }
 
-        public static unsafe void MessageReceived(SystemMessage* msg)
+        public static void MessageReceived(in SystemMessage msg)
         {
             MessageManager.Send(new SystemMessage(SysCallTarget.ServiceReturn));
         }
